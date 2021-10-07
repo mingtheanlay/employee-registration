@@ -41,34 +41,57 @@
                     </div>
                     <div class="hidden sm:block sm:ml-6">
                         <div class="flex space-x-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="{{ route('/') }}" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-                                aria-current="page">Home</a>
-                            <a href="{{ route('employee') }}"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Employee</a>
+                            <a href="{{ route('/') }}"
+                                class="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                            @auth
+                                @if (auth()->user())
+                                    <a href="{{ route('employee') }}"
+                                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Employee</a>
 
-                            <a href="{{ route('employee_register') }}"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+                                    <a href="{{ route('employee_register') }}"
+                                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+                                @endif
+                            @endauth
+                            @guest
+                                <a href="{{ route('register') }}"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign
+                                    Up</a>
+                                <a href="{{ route('login') }}"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Log
+                                    In</a>
+                            @endguest
                         </div>
                     </div>
                 </div>
-                <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                    <div class="dropdown inline-block relative">
-                        <button class="text-white font-semibold py-2 px-4 rounded inline-flex items-center">
-                            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                            </svg>
-                        </button>
-                        <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
-                            <li class=""><a class=" rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block
-                                whitespace-no-wrap" href="#">Setting</a></li>
-                            <li class=""><a class=" bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                                href="{{ route('register') }}">New HR</a></li>
-                            <li class=""><a class=" rounded-b bg-gray-200 hover:bg-gray-400 py-2 px-4 block
-                                whitespace-no-wrap" href="#">Logout</a></li>
-                        </ul>
-                    </div>
-                </div>
+                @auth
+                    @if (auth()->user())
+                        <div
+                            class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                            <div class="dropdown inline-block relative">
+                                <button class="text-white font-semibold py-2 px-4 rounded inline-flex items-center">
+                                    <span class="mr-2">{{ auth()->user()->username }}</span>
+                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 20 20">
+                                        <path
+                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                    </svg>
+                                </button>
+                                <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+                                    <li class=""><a class=" rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block
+                                        whitespace-no-wrap" href="#">Setting</a></li>
+                                    <li class="">
+                                        <form class=" rounded-b
+                                        bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
+                                        action="{{ route('logout') }}" method="post">
+                                        @csrf
+                                            <button type="submit">Logout</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    @endif
+                @endauth
             </div>
         </div>
 
@@ -76,19 +99,33 @@
         <div class="md:hidden hidden mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <a href="{{ route('/') }}" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
+                <a href="{{ route('/') }}"
+                    class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
                     aria-current="page">Home</a>
-                <a href="{{ route('employee') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Employee</a>
+                @auth
+                    @if (auth()->user())
+                        <a href="{{ route('employee') }}"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Employee</a>
 
-                <a href="{{ route('employee_register') }}"
-                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Register</a>
+                        <a href="{{ route('employee_register') }}"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Register</a>
+                    @endif
+                @endauth
+                @guest
+                    <a href="{{ route('register') }}"
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Sign
+                        Up</a>
+
+                    <a href="{{ route('login') }}"
+                        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Log
+                        in</a>
+                @endguest
             </div>
         </div>
     </nav>
 
     {{-- Content --}}
-    <section class="h-screen">
+    <section class="min-h-screen bg-gray-50">
         @yield('content')
     </section>
 
