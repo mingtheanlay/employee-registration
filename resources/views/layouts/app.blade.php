@@ -15,84 +15,87 @@
 <body>
     {{-- Nav Bar --}}
     <nav class="bg-gray-800 py-4">
-        <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-            <div class="relative flex items-center justify-between h-16">
-                <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
-                    <!-- Mobile menu button-->
-                    <button type="button"
-                        class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
-                        aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-                <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                    <div class="flex-shrink-0 flex items-center">
-                        <a class="text-2xl font-bold text-white lg:text-3xl" href="{{ route('/') }}">GoodHill</a>
-                    </div>
-                    <div class="hidden sm:block sm:ml-6">
-                        <div class="flex space-x-4">
-                            <a href="{{ route('/') }}"
-                                class="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                            @auth
-                                @if (auth()->user())
-                                    <a href="{{ route('employee') }}"
-                                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Employee</a>
-
-                                    <a href="{{ route('employee_register') }}"
-                                        class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
-                                @endif
-                            @endauth
-                            @guest
-                                <a href="{{ route('register') }}"
-                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign
-                                    Up</a>
-                                <a href="{{ route('login') }}"
-                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Log
-                                    In</a>
-                            @endguest
-                        </div>
-                    </div>
-                </div>
-                @auth
-                    @if (auth()->user())
-                        <div
-                            class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                            <div class="dropdown inline-block relative">
-                                <button class="text-white font-semibold py-2 px-4 rounded inline-flex items-center">
-                                    <span class="mr-2">{{ auth()->user()->username }}</span>
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 20 20">
-                                        <path
-                                            d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
-                                    </svg>
-                                </button>
-                                <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
-                                    <li class=""><a class=" rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block
-                                        whitespace-no-wrap" href="#">Setting</a></li>
-                                    <li class="">
-                                        <form class=" rounded-b
-                                        bg-gray-200 hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap"
-                                        action="{{ route('logout') }}" method="post">
-                                        @csrf
-                                            <button type="submit">Logout</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    @endif
-                @endauth
+        <div class="container px-5 py-3 mx-auto flex items-center justify-between">
+            <div class="flex items-center sm:hidden">
+                <!-- Mobile menu button-->
+                <button type="button"
+                    class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+                    aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
             </div>
+            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <span class="sm:ml-0 ml-7">
+
+                </span>
+                <div class="flex-shrink-0 flex items-center">
+                    <a class="text-4xl font-bold text-white lg:text-3xl" href="{{ route('/') }}">GoodHill</a>
+                </div>
+                <div class="hidden sm:block sm:ml-6">
+                    <div class="flex space-x-4">
+                        <a href="{{ route('/') }}"
+                            class="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        @auth
+                            @if (auth()->user())
+                                <a href="{{ route('employee') }}"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Employee</a>
+
+                                <a href="{{ route('employee_register') }}"
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+                            @endif
+                        @endauth
+                        @guest
+                            <a href="{{ route('register') }}"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign
+                                Up</a>
+                            <a href="{{ route('login') }}"
+                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Log
+                                In</a>
+                        @endguest
+                    </div>
+                </div>
+            </div>
+            @auth
+                @if (auth()->user())
+                    <div class="flex items-center">
+                        <div class="dropdown inline-block relative">
+                            <button class="text-white font-semibold rounded inline-flex items-center">
+                                <span class="mr-2">{{ auth()->user()->username }}</span>
+                                <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                                </svg>
+                            </button>
+                            <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
+                                <li class=""><a class=" rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block
+                                    whitespace-no-wrap" href="#">Setting</a></li>
+                                <li class="">
+                                        <form class=" rounded-b bg-gray-200
+                                    hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" action="{{ route('logout') }}"
+                                    method="post">
+                                    @csrf
+                                    <button type="submit">Logout</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                @endif
+            @endauth
+            @guest
+                <span class="flex-1">
+
+                </span>
+            @endguest
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
@@ -100,8 +103,7 @@
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a href="{{ route('/') }}"
-                    class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium"
-                    aria-current="page">Home</a>
+                    class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
                 @auth
                     @if (auth()->user())
                         <a href="{{ route('employee') }}"
@@ -133,7 +135,7 @@
     <footer class="text-gray-400 bg-gray-800 body-font">
         <div class="container px-5 py-8 mx-auto flex items-center sm:flex-row flex-col">
             <a
-                class="flex title-font items-center md:justify-start justify-center text-white text-2xl font-bold lg:text-3xl">
+                class="flex title-font items-center md:justify-start justify-center text-white text-4xl font-bold lg:text-3xl">
                 GoodHill
             </a>
 
