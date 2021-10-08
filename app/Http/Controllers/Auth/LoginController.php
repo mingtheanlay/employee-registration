@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware("guest");
+    }
+
     public function index()
     {
         return view('auth.login');
@@ -18,10 +23,11 @@ class LoginController extends Controller
         $this->validate($req, [
             'username' => 'required',
             'password' => 'required',
+
         ]);
 
         // Sign User in
-        if (auth()->attempt($req->only('username', 'password'))) {
+        if (auth()->attempt($req->only('username', 'password'), $req->remember)) {
             // Redirect
             return redirect()->route('/');
         } else {

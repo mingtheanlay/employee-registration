@@ -17,13 +17,13 @@ class CreateEmployeesTable extends Migration
             $table->id()->unique();
             $table->string('first_name');
             $table->string('last_name');
-            $table->string('username');
-            $table->string('password');
+            $table->string('title');
+            $table->string('work_department');
+            $table->string('gender');
+            $table->date('date_of_birth');
+            $table->string('salary');
             $table->string('telephone');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('salary');
-            $table->rememberToken();
             $table->timestamps();
         });
     }

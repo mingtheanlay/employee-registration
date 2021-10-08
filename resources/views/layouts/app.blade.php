@@ -16,7 +16,7 @@
     {{-- Nav Bar --}}
     <nav class="bg-gray-800 py-4">
         <div class="container px-5 py-3 mx-auto flex items-center justify-between">
-            <div class="flex items-center sm:hidden">
+            <div class="flex-1 flex items-center sm:hidden">
                 <!-- Mobile menu button-->
                 <button type="button"
                     class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -35,9 +35,6 @@
                 </button>
             </div>
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-                <span class="sm:ml-0 ml-7">
-
-                </span>
                 <div class="flex-shrink-0 flex items-center">
                     <a class="text-4xl font-bold text-white lg:text-3xl" href="{{ route('/') }}">GoodHill</a>
                 </div>
@@ -51,7 +48,7 @@
                                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Employee</a>
 
                                 <a href="{{ route('employee_register') }}"
-                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register</a>
+                                    class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register Employee</a>
                             @endif
                         @endauth
                         @guest
@@ -92,14 +89,14 @@
                 @endif
             @endauth
             @guest
-                <span class="flex-1">
+                <div class="flex-1">
 
-                </span>
+                </div>
             @endguest
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
-        <div class="md:hidden hidden mobile-menu">
+        <div class="flex-1 md:hidden hidden mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a href="{{ route('/') }}"
@@ -110,7 +107,7 @@
                             class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Employee</a>
 
                         <a href="{{ route('employee_register') }}"
-                            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Register</a>
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Register Employee</a>
                     @endif
                 @endauth
                 @guest

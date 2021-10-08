@@ -4,7 +4,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Content\EmployeeController;
-use App\Http\Controllers\Content\EmployeeRegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +22,9 @@ Route::get('/', function () {
 })->name('/');
 
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
-
-Route::get('/employee_register', [EmployeeRegisterController::class, 'index'])->name('employee_register');
+Route::get('/employee_register', [EmployeeController::class, 'create'])->name('employee_register');
+Route::post('/employee_register', [EmployeeController::class, 'store'])->name('employee_register');
+Route::get('/employee_destroy/{id}', [EmployeeController::class, 'destroy']);
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
