@@ -40,7 +40,7 @@
                                         </div>
                                         <div>
                                             <p class="font-semibold text-black">
-                                                {{ $employee->first_name . $employee->last_name }}</p>
+                                                {{ $employee->first_name . " " . $employee->last_name }}</p>
                                             <p class="text-xs text-gray-600">{{ $employee->title }}</p>
                                         </div>
                                     </div>
