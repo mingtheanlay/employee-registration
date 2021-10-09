@@ -22,7 +22,7 @@
                             <th class="px-4 py-3">Salary</th>
                             <th class="px-4 py-3">Telephone</th>
                             <th class="px-4 py-3">Email</th>
-                            <th class="px-4 py-3">Action</th>
+                            <th class="px-4 py-3 text-center">Action</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white">
@@ -33,7 +33,7 @@
                                     <div class="flex items-center text-sm">
                                         <div class="relative w-8 h-8 mr-3 rounded-full md:block">
                                             <img class="object-cover w-full h-full rounded-full"
-                                                src="https://images.pexels.com/photos/5212324/pexels-photo-5212324.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+                                                src="https://via.placeholder.com/150"
                                                 alt="" loading="lazy" />
                                             <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true">
                                             </div>
@@ -49,16 +49,23 @@
                                 <td class="px-4 py-3 text-sm border">${{ $employee->salary }}</td>
                                 <td class="px-4 py-3 text-sm border">{{ $employee->telephone }}</td>
                                 <td class="px-4 py-3 text-sm border">{{ $employee->email }}</td>
-                                <td class="px-8 py-6 border flex text-center justify-center">
-                                    <a class="flex-1" href=""><img src="{{ asset('img/view.png') }}" alt=""></a>
-                                    <a class="flex-1" href=""><img src="{{ asset('img/edit.svg') }}" alt=""></a>
-                                    <a class="flex-1" href="employee_destroy/{{$employee->id}}"><img src="{{ asset('img/delete.svg') }}" alt=""></a>
+                                <td class="py-6 border flex text-center justify-center">
+                                    <a class="px-2" href="employee_show/{{ $employee->id }}"><img style="width:30px"
+                                            src="{{ asset('img/view.svg') }}" alt=""></a>
+                                    <a class="px-2" href="employee_edit/{{ $employee->id }}"><img style="width:30px"
+                                            src="{{ asset('img/edit.svg') }}" alt=""></a>
+                                    <a class="px-2" href="employee_destroy/{{ $employee->id }}"><img
+                                            style="width:30px;" src="{{ asset('img/delete.svg') }}"
+                                            alt=""></a>
                                 </td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             </div>
+            <span>
+                {{$employees->links()}}
+            </span>
         </div>
     </section>
 @endsection

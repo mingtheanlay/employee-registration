@@ -58,9 +58,10 @@ class EmployeeController extends Controller
         return redirect()->route('employee')->with('status', 'Employee has been added');
     }
 
-    public function show()
+    public function show($id)
     {
-        return view();
+        $employees = DB::select('select * from employees where id = ?', [$id]);
+        return view('employee.employee_show', compact('employees'));
     }
 
     public function destroy($id)
@@ -71,14 +72,42 @@ class EmployeeController extends Controller
         return redirect()->route('employee')->with('status', 'Employee has been deleted');
     }
 
-    public function edit(Employee $emp)
+    public function edit($id)
     {
-        return view();
+        $employees = DB::select('select * from employees where id = ?', [$id]);
+        return view('employee.employee_edit', compact('employees'));
     }
 
-    public function update(Request $req, Employee $emp)
+    public function update(Request $req, $id)
     {
-        $emp->update($req->all());
+        $first_name = $req->input('first_name');
+        $last_name = $req->input('last_name');
+        $title = $req->input('title');
+        $work_department = $req->input('work_department');
+        $gender = $req->input('gender');
+        $date_of_birth = $req->input('date_of_birth');
+        $salary = $req->input('salary');
+        $email = $req->input('email');
+        $telephone = $req->input('telephone');
+
+        DB::update('update
+        employees
+      set
+        first_name = ?,
+        last_name = ?,
+        title = ?,
+        work_department = ?,
+        gender = ?,
+        date_of_birth = ?,
+        salary = ?,
+        email = ?,
+        telephone = ?
+      where
+        id = ?
+      ', [$first_name, $last_name, $title, $work_department, $gender, $date_of_birth, $salary, $email, $telephone, $id]);
+
+        // Redirect
+        return redirect()->route('employee')->with('status', 'Employee has been updated');
     }
 
 }

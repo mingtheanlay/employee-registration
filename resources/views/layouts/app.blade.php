@@ -16,7 +16,7 @@
     {{-- Nav Bar --}}
     <nav class="bg-gray-800 py-4">
         <div class="container px-5 py-3 mx-auto flex items-center justify-between">
-            <div class="flex-1 flex items-center sm:hidden">
+            <div class="flex items-center sm:hidden">
                 <!-- Mobile menu button-->
                 <button type="button"
                     class="mobile-menu-button inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
@@ -51,14 +51,6 @@
                                     class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Register Employee</a>
                             @endif
                         @endauth
-                        @guest
-                            <a href="{{ route('register') }}"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sign
-                                Up</a>
-                            <a href="{{ route('login') }}"
-                                class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Log
-                                In</a>
-                        @endguest
                     </div>
                 </div>
             </div>
@@ -73,8 +65,6 @@
                                 </svg>
                             </button>
                             <ul class="dropdown-menu absolute hidden text-gray-700 pt-1">
-                                <li class=""><a class=" rounded-t bg-gray-200 hover:bg-gray-400 py-2 px-4 block
-                                    whitespace-no-wrap" href="#">Setting</a></li>
                                 <li class="">
                                         <form class=" rounded-b bg-gray-200
                                     hover:bg-gray-400 py-2 px-4 block whitespace-no-wrap" action="{{ route('logout') }}"
@@ -88,11 +78,6 @@
                     </div>
                 @endif
             @endauth
-            @guest
-                <div class="flex-1">
-
-                </div>
-            @endguest
         </div>
 
         <!-- Mobile menu, show/hide based on menu state. -->
@@ -110,17 +95,14 @@
                             class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Register Employee</a>
                     @endif
                 @endauth
-                @guest
-                    <a href="{{ route('register') }}"
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Sign
-                        Up</a>
-
-                    <a href="{{ route('login') }}"
-                        class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Log
-                        in</a>
-                @endguest
             </div>
         </div>
+        @guest
+        <div class="flex-1">
+
+        </div>
+    @endguest
+</div>
     </nav>
 
     {{-- Content --}}

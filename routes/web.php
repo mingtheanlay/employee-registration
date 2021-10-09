@@ -24,7 +24,14 @@ Route::get('/', function () {
 Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
 Route::get('/employee_register', [EmployeeController::class, 'create'])->name('employee_register');
 Route::post('/employee_register', [EmployeeController::class, 'store'])->name('employee_register');
+
 Route::get('/employee_destroy/{id}', [EmployeeController::class, 'destroy']);
+
+Route::get('/employee_edit/{id}', [EmployeeController::class, 'edit']);
+Route::post('/employee_update/{id}', [EmployeeController::class, 'update']);
+
+Route::get('/employee_show/{id}', [EmployeeController::class, 'show']);
+
 
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
