@@ -29,7 +29,7 @@ composer install
 npm install
 ```
 
-### 5. Create a copy of your .env file
+### 5. Create a copy of your .env file, and config your database
 
 Laravel's default .env file contains some common configuration values that may differ based on whether your application is running locally or on a production web server. These values are then retrieved from various Laravel configuration files within the config directory using Laravel's env function. In this case, make sure you create the database and config your database in the **.env** file.
 
