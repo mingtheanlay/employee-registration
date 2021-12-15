@@ -20,14 +20,9 @@ composer install
 ### 3. Install NPM Dependencies
 
 ```bash
-composer install
-```
-
-### 4. Install NPM Dependencies
-
-```bash
 npm install
 ```
+
 
 ### 5. Create a copy of your .env file, and config your database
 
